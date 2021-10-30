@@ -1,17 +1,24 @@
 import { createContext, ReactNode, useState } from "react";
 import { useHistory } from "react-router";
 import api from "../../Services/api";
-
+import { toast } from 'react-toastify'
 interface AccountProviderProps{
     children: ReactNode
 }
-export interface UserData{
+interface UserData{
     email?:string,
     password?:string
     
 }
+interface RegisterData{
+    name:string,
+    email:string,
+    password:string,
+    confirmPassword:string
+}
 interface AccountProviderData{
-    LogIn: (LoginData:UserData) => void 
+    LogIn: (LoginData:UserData) => void ,
+    Register:(data:RegisterData) => void
 }
 
 
@@ -31,9 +38,20 @@ export const AccountProvider = ({ children }: AccountProviderProps) =>{
         })
         .catch((err)=> console.log(err))
     }
+    const Register = (data:RegisterData) =>{
+        console.log(data)
+        api.post('/register', data)
+        .then((response)=>{
+            toast.configure()
+            toast.success('Conta criada com sucesso')
+            history.push('/')
+
+        })
+        .catch((err)=>console.log(err))
+    }
 
     return(
-        <AccountContext.Provider value={{LogIn}}>
+        <AccountContext.Provider value={{ LogIn, Register }}>
             { children }
         </AccountContext.Provider>
     )

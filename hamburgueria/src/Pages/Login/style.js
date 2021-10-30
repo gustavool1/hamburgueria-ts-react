@@ -74,7 +74,6 @@ export const Form = styled.form`
     width: 100%;
     border: 2px solid #aaa;
     border-radius: 4px;
-    margin: 8px 0;
     outline: none;
     padding: 8px;
     box-sizing: border-box;
@@ -86,5 +85,16 @@ export const Form = styled.form`
     @media screen and (min-width: 768px) {
       max-width: 452px;
     }
+  }
+  div {
+    width: 100%;
+    p {
+      height: 10px;
+      margin: 6px;
+      color: var(--negative);
+    }
+  }
+  div:nth-child(3) {
+    margin-bottom: 10px;
   }
 `;

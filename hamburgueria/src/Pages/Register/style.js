@@ -70,13 +70,43 @@ export const Form = styled.form`
     border: 2px solid var(--grey-100);
     box-shadow: 5px 5px 10px var(--grey-100);
   }
-  div {
+  section {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     p {
       width: 80%;
+    }
+  }
+  a {
+    color: var(--grey-300);
+  }
+  div {
+    width: 100%;
+    p {
+      height: 10px;
+      margin: 6px;
+      color: var(--negative);
+    }
+  }
+  div:nth-child(5) {
+    margin-bottom: 20px;
+  }
+  input {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 2s;
+    max-width: 300px;
+    :focus {
+      border-color: var(--grey-600);
+    }
+    @media screen and (min-width: 768px) {
+      max-width: 452px;
     }
   }
 `;

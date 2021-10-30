@@ -3,9 +3,10 @@ import { ButtonDefault, ButtonGrey} from './style.js'
 interface ButtonProps extends ButtonHTMLAttributes <HTMLButtonElement>{
     size?:boolean,
     children: string,
+
 }
 
-const Button = ({size,  children, ...rest }:ButtonProps) =>{
+const Button = ({size, children, ...rest }:ButtonProps) =>{
     return(
         
         !size ?
@@ -14,7 +15,7 @@ const Button = ({size,  children, ...rest }:ButtonProps) =>{
             )
             :
             (
-                <ButtonGrey>{ children }</ButtonGrey>
+                <ButtonGrey {...rest}>{ children }</ButtonGrey>
             )
         
         
