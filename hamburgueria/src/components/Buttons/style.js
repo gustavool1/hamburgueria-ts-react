@@ -19,8 +19,8 @@ export const ButtonDefault = styled.button`
   }
 `;
 
-export const ButtonSmall = styled.button`
-  background-color: var(--color-primary);
+export const ButtonGrey = styled.button`
+  background-color: var(--grey-100);
   border: none;
   font-size: 16px;
   padding: 10px;
@@ -31,7 +31,7 @@ export const ButtonSmall = styled.button`
   transition: 1s;
   cursor: pointer;
   :hover {
-    background-color: rgba(147, 215, 175, 1);
+    background-color: var(--grey-300);
   }
   @media screen and (min-width: 768px) {
     max-width: 452px;

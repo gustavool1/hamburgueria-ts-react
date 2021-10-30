@@ -14,7 +14,7 @@ export const Container = styled.div`
     font-size: 20px;
   }
   @media screen and (min-width: 768px) {
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 `;
 
@@ -70,21 +70,13 @@ export const Form = styled.form`
     border: 2px solid var(--grey-100);
     box-shadow: 5px 5px 10px var(--grey-100);
   }
-  input {
+  div {
     width: 100%;
-    border: 2px solid #aaa;
-    border-radius: 4px;
-    margin: 8px 0;
-    outline: none;
-    padding: 8px;
-    box-sizing: border-box;
-    transition: 2s;
-    max-width: 300px;
-    :focus {
-      border-color: var(--grey-600);
-    }
-    @media screen and (min-width: 768px) {
-      max-width: 452px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      width: 80%;
     }
   }
 `;

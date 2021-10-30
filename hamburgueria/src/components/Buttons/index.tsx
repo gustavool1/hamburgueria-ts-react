@@ -1,25 +1,23 @@
-import { ReactNode } from "react"
-import { ButtonDefault, ButtonSmall} from './style.js'
-interface ButtonProps{
+import { ButtonHTMLAttributes, ReactNode } from "react"
+import { ButtonDefault, ButtonGrey} from './style.js'
+interface ButtonProps extends ButtonHTMLAttributes <HTMLButtonElement>{
     size?:boolean,
-    callBack?:()=>void,
     children: string,
 }
 
-const Button = ({size, callBack, children}:ButtonProps) =>{
+const Button = ({size,  children, ...rest }:ButtonProps) =>{
     return(
-        <>
-        {size ?
+        
+        !size ?
             (
-                <ButtonDefault onClick={callBack}>{ children }</ButtonDefault>
+                <ButtonDefault {...rest}>{ children }</ButtonDefault>
             )
             :
             (
-                <ButtonSmall onClick={callBack}>{ children }</ButtonSmall>
-
+                <ButtonGrey>{ children }</ButtonGrey>
             )
-        }
-        </>
+        
+        
     )
 }
 
