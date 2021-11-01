@@ -1,5 +1,8 @@
 import { ReactNode } from "react";
 import { AccountProvider } from './Account'
+import { MenuProvider } from "./Menu";
+import { ModalProvider } from "./Modal";
+import { CartProvider } from './Cart'
 interface ProviderProps{
     children: ReactNode
 }
@@ -8,7 +11,13 @@ const Providers = ({ children}:ProviderProps ) =>{
 
     return(
         <AccountProvider>
-          {children}
+            <MenuProvider>
+                <ModalProvider>
+                    <CartProvider>
+                        {children}
+                    </CartProvider>
+                </ModalProvider>
+            </MenuProvider>
         </AccountProvider>
     )
 }

@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useContext } from "react"
 import { AccountContext } from "../../Providers/Account"
 import { Link } from "react-router-dom"
+import Logo from "../../components/Logo"
 interface FormData{
     name:string,
     email:string,
@@ -35,7 +36,7 @@ const Register = () =>{
     return(
         <Container>
         <InfoContainer>
-            <h1>Burguer<span> Kenzie</span></h1>
+            <Logo/>
             <section>
                 <IconContainer>
                     <IoRestaurantOutline/>

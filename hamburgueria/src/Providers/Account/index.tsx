@@ -18,7 +18,13 @@ interface RegisterData{
 }
 interface AccountProviderData{
     LogIn: (LoginData:UserData) => void ,
-    Register:(data:RegisterData) => void
+    Register:(data:RegisterData) => void,
+    LogOut:()=>void,
+    token:string,
+    isAuthenticated: boolean
+}
+interface DecodedToken {
+
 }
 
 
@@ -28,13 +34,18 @@ export const AccountContext = createContext <AccountProviderData>({} as AccountP
 export const AccountProvider = ({ children }: AccountProviderProps) =>{
     const history = useHistory()
     const [ token, setToken ] = useState(localStorage.getItem('token') || '')
+    const [ userId, setUserId ] = useState(localStorage.getItem('userId') || 0)
+    const [ isAuthenticated, setIsAuthenticated ] = useState(false)
     const LogIn = (data:UserData) =>{
         console.log(data)
         api.post('/login', data)
         .then((response)=> {
-            console.log(response.data)
+            console.log('REsposta',response.data)
             localStorage.setItem("token", response.data.accessToken)
+            localStorage.setItem('userId', response.data.user.id)
             history.push('/dashboard')
+            setIsAuthenticated(true)
+            
         })
         .catch((err)=> console.log(err))
     }
@@ -49,9 +60,12 @@ export const AccountProvider = ({ children }: AccountProviderProps) =>{
         })
         .catch((err)=>console.log(err))
     }
-
+    const LogOut = () =>{
+        localStorage.clear()
+        setIsAuthenticated(false)
+    }
     return(
-        <AccountContext.Provider value={{ LogIn, Register }}>
+        <AccountContext.Provider value={{ LogIn,LogOut, Register, token, isAuthenticated}}>
             { children }
         </AccountContext.Provider>
     )

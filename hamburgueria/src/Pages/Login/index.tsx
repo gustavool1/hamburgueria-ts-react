@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useContext } from "react"
 import { AccountContext } from "../../Providers/Account"
 import { useHistory } from "react-router";
+import Logo from "../../components/Logo"
 
 interface UserData{
     email:string,
@@ -27,13 +28,12 @@ const Login = () =>{
         LogIn(data)
     }
     const RedirectTo = () =>{
-        console.log('a')
         history.push('/register')
     }
     return(
         <Container>
             <InfoContainer>
-                <h1>Burguer<span> Kenzie</span></h1>
+                <Logo/>
                 <section>
                     <IconContainer>
                         <IoRestaurantOutline/>

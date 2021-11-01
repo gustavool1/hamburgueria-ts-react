@@ -18,7 +18,9 @@ const GlobalStyle = createGlobalStyle`
         --information:#155BCB;
     }
     body{
-        font-size: 17px;;
+        font-size: 17px;
+        padding: 0px;
+        margin: 0px;
     }
     h1{
         font-size: 26px;
@@ -30,6 +32,9 @@ const GlobalStyle = createGlobalStyle`
     }
     h3{
         font-size: 18px;
+    }
+    h4{
+        font-size:16px;
     }
 
 
