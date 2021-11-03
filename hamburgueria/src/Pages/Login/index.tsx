@@ -14,8 +14,10 @@ interface UserData{
     password:string
 }
 const Login = () =>{
-    const { LogIn } = useContext(AccountContext)
     const history = useHistory()
+    const { LogIn } = useContext(AccountContext)
+  
+   
     const scheme = yup.object().shape({
         email:yup.string().required("* Email obrigatório").email("* Insira um email válido"),
         password:yup.string().required("* Senha obrigatória")

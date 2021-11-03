@@ -20,19 +20,16 @@ export const ButtonDefault = styled.button`
 `;
 
 export const ButtonGrey = styled.button`
-  background-color: var(--grey-100);
   border: none;
   font-size: 16px;
   padding: 10px;
   width: 100%;
-
   color: white;
   border-radius: 5px;
   transition: 1s;
   cursor: pointer;
-  :hover {
-    background-color: var(--grey-300);
-  }
+  background-color: var(--grey-300);
+
   @media screen and (min-width: 768px) {
     max-width: 452px;
   }

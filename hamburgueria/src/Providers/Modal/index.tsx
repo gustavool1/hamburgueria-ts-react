@@ -1,5 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import api from "../../Services/api";
+import { createContext, ReactNode,  useState } from "react";
 
 interface ModalProviderProps{
     children:ReactNode

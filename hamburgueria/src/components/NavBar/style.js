@@ -72,8 +72,8 @@ export const InteractionContainer = styled.div`
     border-bottom-right-radius: 5px;
   }
   @media screen and (max-width: 768px) {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
+    margin-left: 20px;
   }
 `;
 

@@ -21,10 +21,7 @@ interface AccountProviderData{
     Register:(data:RegisterData) => void,
     LogOut:()=>void,
     token:string,
-    isAuthenticated: boolean
-}
-interface DecodedToken {
-
+    
 }
 
 
@@ -33,26 +30,23 @@ export const AccountContext = createContext <AccountProviderData>({} as AccountP
 
 export const AccountProvider = ({ children }: AccountProviderProps) =>{
     const history = useHistory()
-    const [ token, setToken ] = useState(localStorage.getItem('token') || '')
-    const [ userId, setUserId ] = useState(localStorage.getItem('userId') || 0)
-    const [ isAuthenticated, setIsAuthenticated ] = useState(false)
+    const [ token ] = useState(localStorage.getItem('token') || '')
+   
+
     const LogIn = (data:UserData) =>{
         console.log(data)
         api.post('/login', data)
         .then((response)=> {
-            console.log('REsposta',response.data)
             localStorage.setItem("token", response.data.accessToken)
             localStorage.setItem('userId', response.data.user.id)
-            history.push('/dashboard')
-            setIsAuthenticated(true)
+            history.push('/')
             
         })
-        .catch((err)=> console.log(err))
+        .catch(()=> toast.error("Email ou senha incorretos"))
     }
     const Register = (data:RegisterData) =>{
-        console.log(data)
         api.post('/register', data)
-        .then((response)=>{
+        .then(()=>{
             toast.configure()
             toast.success('Conta criada com sucesso')
             history.push('/')
@@ -62,10 +56,11 @@ export const AccountProvider = ({ children }: AccountProviderProps) =>{
     }
     const LogOut = () =>{
         localStorage.clear()
-        setIsAuthenticated(false)
+        history.push('/login')
     }
+    
     return(
-        <AccountContext.Provider value={{ LogIn,LogOut, Register, token, isAuthenticated}}>
+        <AccountContext.Provider value={{ LogIn,LogOut, Register, token}}>
             { children }
         </AccountContext.Provider>
     )

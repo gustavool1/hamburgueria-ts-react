@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+<h1>Endpoints</h1>
+<p>Essa api possuí 6 endpoints</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>POST/login</h2>
 
-## Available Scripts
+Para efetuar o login você precisa fazer uma requisição com o seguinte corpo
 
-In the project directory, you can run:
+```json
+    {
+        email:"teste@email.com",
+        password:"123456"
+    }
+```
 
-### `yarn start`
+<h2>POST/register</h2>
+Para efetuar o você precisa fazer uma requisição com o seguinte corpo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```json
+    {   
+        name:"Gustavo",
+        email:"teste@email.com"
+        password:"1234567",
+        confirmPassword:"1234567"
+    }
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<h2>GET/cart</h2>
+Através desse endpoint nós conseguimos pegar o carrinho de todos os usuários, porém é necessário passar o bearer, como no exemplo abaixo.
 
-### `yarn test`
+```json{
+    headers:{
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h2>GET/cart?userId=id</h2>
+Através desse endpoint nós podemos pegar o carrinho específico do usuário, também é necessário passar o bearer, como no exemplo abaixo.
+```json{
 
-### `yarn build`
+    headers:{
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2>POST/cart</h2>
+Através desse enpoint podemos adicionar um novo item ao carrinho. Passando o seguinte corpo para requisição.
+```json{
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+      "title": "Lanche ",
+      "price": 22.30,
+      "type": "Lanche",
+      "image": "https://i.ibb.co/bKfR0rf/combococa.png",
+      "userId":3
+    
+}```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2>DELETE/cart/id</h2>
+Através desse endpoint nós podemos deletar um item do carrinho. É necessário passar o bearer, como no exemplo abaixo.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```json{
+     headers:{
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+}
+```

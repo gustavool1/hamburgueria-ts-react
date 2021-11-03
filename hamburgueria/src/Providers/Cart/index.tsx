@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
 import api from "../../Services/api";
-import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
 interface CartProviderProps{
     children: ReactNode
@@ -18,45 +17,62 @@ interface CartProviderData{
     addToCart: (item:MenuItem) => void,
     removeFromCart: (item:MenuItem) => void,
     removeAllFromCart: () => void,
-    cart: MenuItem[]
+    getTotal: () => void,
+    cart: MenuItem[],
 }
 export const CartContext = createContext <CartProviderData>({} as CartProviderData)
 
 export const CartProvider = ({ children }:CartProviderProps) =>{
     toast.configure() 
-    const token = localStorage.getItem("token") || ''
     const [ cart, setCart ] = useState<MenuItem[]>([])
-    const id = localStorage.getItem('id')
+    const id = localStorage.getItem('userId')
     const getCart = () =>{
-        api.get("/cart" ,{
-            headers:{
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=> setCart(response.data))
+        if(id?.length !==0){
+            api.get(`/cart?userId=${id}` ,{
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then((response)=> setCart(response.data))
+        }
+        
     }
     const addToCart = (item:MenuItem) =>{
-        console.log(item)
         item.userId= Number(localStorage.getItem('userId'))
-
-        api.post("/cart", item,{
+        if(item.userId !== null || item.userId !== undefined ){
+            api.post("/cart", item,{
+                headers:{
+                    Authorization:`Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(()=>{
+                toast.success('Item adicionado ao carrinho')
+    
+            })
+        }
+    }
+    const removeFromCart = (item:MenuItem) =>{
+        api.delete(`cart/${item.id}`, {
             headers:{
-                Authorization:`Bearer ${token}`
+                Authorization:`Bearer ${localStorage.getItem('token')}`
             }
-        }).then(()=>{
-            toast.success('Item adicionado ao carrinho')
+        } )
+        .then((response)=>{
+            getCart()
+            toast.success("Item apagado com sucesso")
+            console.log('aaaa')
         })
     }
 
-    const removeFromCart = (item:MenuItem) =>{
-        const newCart = cart.filter((menuItem)=> menuItem.title !== item.title)
-        setCart(newCart)
-    }
+   
     const removeAllFromCart = () =>{
         setCart([])
     }
 
+    const getTotal = () =>{
+        
+    }
+
     return(
-        <CartContext.Provider value={{ addToCart,cart,removeFromCart, removeAllFromCart, getCart}}>
+        <CartContext.Provider value={{ addToCart,cart,removeFromCart, removeAllFromCart, getCart, getTotal}}>
             { children }
         </CartContext.Provider>
     )

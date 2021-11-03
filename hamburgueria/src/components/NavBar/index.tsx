@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { MenuContext } from '../../Providers/Menu'
 const NavBar = () =>{
     const { handleModal } = useContext(ModalContext)
-    const { isAuthenticated, LogOut } = useContext(AccountContext)
+    const {  LogOut } = useContext(AccountContext)
     const { filteringMenu, getMenu } = useContext(MenuContext)
     const [inputValue, setInputValue ] = useState('')
     const handleChange = (e:any) =>{
@@ -18,7 +18,7 @@ const NavBar = () =>{
         if(inputValue.length === 0){
             getMenu()
         }
-    },[inputValue])
+    },[inputValue, getMenu])
     return(
         <Container>
             <LogoContainer>
@@ -31,7 +31,7 @@ const NavBar = () =>{
                     <button onClick={handleChange}><IoSearchOutline/></button>
                 </div>
                 <IconsContainer>
-                    {isAuthenticated ?
+                    {localStorage.getItem('token')?.length !==0 ?
                     (
                         <>
                         <button onClick={handleModal}>
@@ -43,7 +43,7 @@ const NavBar = () =>{
                         </>
                     ):
                     (
-                        <Link to='/'>Entrar</Link>
+                        <Link to='/login'>Entrar</Link>
                     )
                     } 
                     

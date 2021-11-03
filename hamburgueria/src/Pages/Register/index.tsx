@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useContext } from "react"
 import { AccountContext } from "../../Providers/Account"
 import { Link } from "react-router-dom"
+
 import Logo from "../../components/Logo"
 interface FormData{
     name:string,
@@ -15,8 +16,9 @@ interface FormData{
     confirmPassword:string
 }
 const Register = () =>{
-    const { Register } = useContext(AccountContext)
 
+    const { Register } = useContext(AccountContext)
+    
     const scheme = yup.object().shape({
         name:yup.string().required("* Nome obrigatório"),
         email:yup.string().required("* Email obrigatório").email("* Insira um email válido"),
@@ -47,7 +49,7 @@ const Register = () =>{
         <Form onSubmit={handleSubmit(onSubmit)}>
             <section>
                 <h3>Cadastrar-se</h3>
-                <p><Link to='/'>Retornar para Login</Link></p>
+                <p><Link to='/login'>Retornar para Login</Link></p>
             </section>
             <div>
                 <p>{errors.name?.message}</p>

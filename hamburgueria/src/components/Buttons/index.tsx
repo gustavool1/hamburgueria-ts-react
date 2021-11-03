@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from "react"
+import { ButtonHTMLAttributes } from "react"
 import { ButtonDefault, ButtonGrey} from './style.js'
 interface ButtonProps extends ButtonHTMLAttributes <HTMLButtonElement>{
     size?:boolean,
