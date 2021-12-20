@@ -34,7 +34,6 @@ export const AccountProvider = ({ children }: AccountProviderProps) =>{
    
 
     const LogIn = (data:UserData) =>{
-        console.log(data)
         api.post('/login', data)
         .then((response)=> {
             localStorage.setItem("token", response.data.accessToken)
