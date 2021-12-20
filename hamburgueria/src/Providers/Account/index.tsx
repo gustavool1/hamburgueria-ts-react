@@ -49,7 +49,7 @@ export const AccountProvider = ({ children }: AccountProviderProps) =>{
         .then(()=>{
             toast.configure()
             toast.success('Conta criada com sucesso')
-            history.push('/')
+            history.push('/login')
 
         })
         .catch((err)=>console.log(err))

@@ -26,7 +26,8 @@ export const MenuProvider = ({ children }: MenuProviderProps) =>{
          })
     }
     const filteringMenu = (inptValue:string) =>{
-        const filteredMenu = menu.filter((menuItem)=> menuItem.title === inptValue)
+        const filteredMenu = menu.filter((menuItem)=> menuItem.title?.toLowerCase()?.startsWith(inptValue.toLowerCase()))
+        console.log(filteredMenu)
         setMenu(filteredMenu)
     }
     return(

@@ -12,7 +12,9 @@ const NavBar = () =>{
     const { filteringMenu, getMenu } = useContext(MenuContext)
     const [inputValue, setInputValue ] = useState('')
     const handleChange = (e:any) =>{
+        setInputValue(e.target.value)
         filteringMenu(inputValue)
+        console.log(inputValue)
     }
     useEffect(()=>{
         if(inputValue.length === 0){
@@ -27,8 +29,8 @@ const NavBar = () =>{
 
             <InteractionContainer>
                 <div>
-                    <input type="text" placeholder="Search.." name="search2" onChange={(e)=>setInputValue(e.target.value)}  value={inputValue}/>
-                    <button onClick={handleChange}><IoSearchOutline/></button>
+                    <input type="text" placeholder="Search.." name="search2" onChange={handleChange}  value={inputValue}/>
+                    <button ><IoSearchOutline/></button>
                 </div>
                 <IconsContainer>
                     {localStorage.getItem('token')?.length !==0 ?
@@ -46,7 +48,6 @@ const NavBar = () =>{
                         <Link to='/login'>Entrar</Link>
                     )
                     } 
-                    
                 </IconsContainer>
             </InteractionContainer>
         </Container>
