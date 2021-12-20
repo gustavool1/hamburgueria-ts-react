@@ -6,21 +6,22 @@ import { ModalContext } from '../../Providers/Modal'
 import { AccountContext } from '../../Providers/Account'
 import { Link } from 'react-router-dom'
 import { MenuContext } from '../../Providers/Menu'
+import { CartContext } from '../../Providers/Cart'
 const NavBar = () =>{
     const { handleModal } = useContext(ModalContext)
     const {  LogOut } = useContext(AccountContext)
+    const { cart, getCart } = useContext(CartContext)
     const { filteringMenu, getMenu } = useContext(MenuContext)
     const [inputValue, setInputValue ] = useState('')
     const handleChange = (e:any) =>{
-        setInputValue(e.target.value)
         filteringMenu(inputValue)
-        console.log(inputValue)
     }
     useEffect(()=>{
         if(inputValue.length === 0){
             getMenu()
-        }
-    },[inputValue, getMenu])
+        }   
+        getCart()
+    },[cart])
     return(
         <Container>
             <LogoContainer>
@@ -29,8 +30,8 @@ const NavBar = () =>{
 
             <InteractionContainer>
                 <div>
-                    <input type="text" placeholder="Search.." name="search2" onChange={handleChange}  value={inputValue}/>
-                    <button ><IoSearchOutline/></button>
+                    <input type="text" placeholder="Search.." name="search2" onChange={(e)=>setInputValue(e.target.value)}  value={inputValue}/>
+                    <button onClick={handleChange}><IoSearchOutline/></button>
                 </div>
                 <IconsContainer>
                     {localStorage.getItem('token')?.length !==0 ?
@@ -38,6 +39,9 @@ const NavBar = () =>{
                         <>
                         <button onClick={handleModal}>
                          <IoCart/>
+                         <div>
+                             <span>{cart.length}</span>
+                         </div>
                         </button>
                         <button onClick={LogOut}>
                             <IoLogInOutline/>
@@ -48,6 +52,7 @@ const NavBar = () =>{
                         <Link to='/login'>Entrar</Link>
                     )
                     } 
+                    
                 </IconsContainer>
             </InteractionContainer>
         </Container>

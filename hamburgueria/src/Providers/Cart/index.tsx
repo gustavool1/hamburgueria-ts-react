@@ -58,7 +58,6 @@ export const CartProvider = ({ children }:CartProviderProps) =>{
         .then((response)=>{
             getCart()
             toast.success("Item apagado com sucesso")
-            console.log('aaaa')
         })
     }
 

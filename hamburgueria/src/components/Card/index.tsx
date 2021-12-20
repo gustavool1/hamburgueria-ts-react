@@ -12,7 +12,11 @@ interface CardProps{
     }
 }
 const Card = ({MenuItem}:CardProps) => {
-    const { addToCart } = useContext(CartContext)
+    const { addToCart, getCart  } = useContext(CartContext)
+    const handleClick = () =>{
+        getCart()
+        addToCart(MenuItem)
+    }
     return(
     <Container>
         <ImageContainer>
@@ -24,7 +28,7 @@ const Card = ({MenuItem}:CardProps) => {
             <h4>R${MenuItem.price}0</h4>
             { localStorage.getItem('token')?.length!==0 ?
             (
-                <Button onClick={()=> addToCart(MenuItem)}>Adicionar</Button>
+                <Button onClick={()=> handleClick()}>Adicionar</Button>
             )
             :
             (

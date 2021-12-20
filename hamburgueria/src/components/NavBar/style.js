@@ -106,4 +106,15 @@ export const IconsContainer = styled.section`
       color: white;
     }
   }
+  div{
+    color: red;
+    position:relative;
+    top: -48px;
+    left:20px;
+    background: var(--color-primary);
+    border-radius:20%;
+    span{
+      color: white;
+    }
+  }
 `;
