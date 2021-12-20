@@ -2,6 +2,7 @@ import { Container, ImageContainer, InfoContainer }from './style'
 import Button from '../Buttons'
 import { useContext } from 'react';
 import { CartContext } from '../../Providers/Cart';
+import { toast } from 'react-toastify';
 interface CardProps{
     MenuItem:{   
         title?:string,
@@ -12,9 +13,8 @@ interface CardProps{
     }
 }
 const Card = ({MenuItem}:CardProps) => {
-    const { addToCart, getCart  } = useContext(CartContext)
+    const { addToCart } = useContext(CartContext)
     const handleClick = () =>{
-        getCart()
         addToCart(MenuItem)
     }
     return(
@@ -26,15 +26,8 @@ const Card = ({MenuItem}:CardProps) => {
             <h3>{MenuItem.title}</h3>
             <p>{MenuItem.type}</p>
             <h4>R${MenuItem.price}0</h4>
-            { localStorage.getItem('token')?.length!==0 ?
-            (
-                <Button onClick={()=> handleClick()}>Adicionar</Button>
-            )
-            :
-            (
-                <Button size>Adicionar</Button>
-            )
-            }
+            { localStorage.getItem('token') ?<Button onClick={()=> handleClick()}>Adicionar</Button>: <Button size onClick={()=> toast.warning('Necessário logar para adicionar um item ao carrinho')}>Adicionar</Button>}
+           
         </InfoContainer>
     </Container>
     ) 

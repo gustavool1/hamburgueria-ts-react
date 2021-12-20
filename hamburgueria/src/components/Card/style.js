@@ -11,6 +11,10 @@ export const Container = styled.div`
   box-sizing: border-box;
   border-radius: 5px;
   margin: 1%;
+  transition:1s;
+  :hover{
+    border: 2px solid var(--color-primary);
+  }
 `;
 
 export const ImageContainer = styled.div`

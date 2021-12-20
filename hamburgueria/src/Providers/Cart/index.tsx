@@ -45,6 +45,7 @@ export const CartProvider = ({ children }:CartProviderProps) =>{
                 }
             }).then(()=>{
                 toast.success('Item adicionado ao carrinho')
+                getCart()
     
             })
         }

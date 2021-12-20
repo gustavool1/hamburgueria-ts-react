@@ -13,6 +13,34 @@ interface UserData{
     email:string,
     password:string
 }
+
+const formMotion = {
+    hidden:{
+        opacity:0,
+        x:-400
+    },
+    visible:{
+        opacity:1,
+        x:0,
+        transition:{
+            duration:2
+        }
+    }
+}
+
+const infoMotion ={
+    hidden:{
+        opacity:0,
+        x:400
+    },
+    visible:{
+        opacity:1,
+        x:0,
+        transition:{
+            duration:2
+        }
+    }
+}
 const Login = () =>{
     const history = useHistory()
     const { LogIn } = useContext(AccountContext)
@@ -34,7 +62,7 @@ const Login = () =>{
     }
     return(
         <Container>
-            <InfoContainer>
+            <InfoContainer variants={infoMotion} initial='hidden' animate='visible'>
                 <Logo/>
                 <section>
                     <IconContainer>
@@ -43,7 +71,7 @@ const Login = () =>{
                     <p>A vida é como um sanduíche, é preciso recheá-la com os melhores ingredientes.</p>
                 </section>
             </InfoContainer>
-            <Form onSubmit={handleSubmit(onSubmitFunc)}>
+            <Form onSubmit={handleSubmit(onSubmitFunc)} variants={formMotion} initial='hidden' animate='visible' >
                 <h3>Login</h3>
                 <div>
                     <p>{errors.email?.message}</p>

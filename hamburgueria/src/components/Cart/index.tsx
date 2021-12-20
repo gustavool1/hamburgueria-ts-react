@@ -10,44 +10,9 @@ const Cart = () =>{
     const { handleModal } = useContext(ModalContext)
     useEffect(()=>{
         getCart()
-        
-    },[getCart])
-    return(<>
-            {/* <CartContainer>
-                <div className='action-container'>
-                    <h2>Carrinho de compras</h2>
-                    <CloseModal>
-                    <IoCloseOutline onClick={handleModal}/>
-                    </CloseModal>
-                </div>
-                { cart.length !==0 ?
-                (
-                    <ItensContainer>
-                        {cart.map((item, key)=>(
-                            <div className='item-cart'key={key}>
-                                <img src={item.image} alt={item.title}/>
-                                <p>{item.title}</p>
-                                <button onClick={()=>removeFromCart(item)}>
-                                    <FaTrash/>
-                                </button>
-                            </div>
-                        ))}
-                    </ItensContainer>
-                )
-                :
-                (
-                    <div>
-                        <p>Sua sacola está vazia</p>
-                    </div>
-                )
-            
-                }
-            </CartContainer>
-            <Total>
-                <h2>Total</h2>
-                <p>R${cart.reduce((acc, item) => acc + Number(item.price), 0).toFixed(2)}</p>
-                 
-            </Total> */}
+    },[])
+    return(
+
         <Container>
             <CartContainer>
                 <InfoContainer>
@@ -82,7 +47,7 @@ const Cart = () =>{
                 </Total>
             </CartContainer>
         </Container>
-        </>
+        
     )
 }
 

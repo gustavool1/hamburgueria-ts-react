@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { motion } from "framer-motion";
 export const Container = styled.div`
   margin-top: 70px;
   display: flex;
@@ -18,7 +18,7 @@ export const Container = styled.div`
   }
 `;
 
-export const InfoContainer = styled.div`
+export const InfoContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
 
@@ -48,7 +48,7 @@ export const IconContainer = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const Form = styled(motion.form)`
   display: flex;
   flex-direction: column;
   align-items: center;

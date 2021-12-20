@@ -74,6 +74,7 @@ export const InteractionContainer = styled.div`
   @media screen and (max-width: 768px) {
     width: 100%;
     margin-left: 20px;
+    margin-bottom:10px;
   }
 `;
 

@@ -15,6 +15,33 @@ interface FormData{
     password:string,
     confirmPassword:string
 }
+const infoMotion = {
+    hidden:{
+        opacity:0,
+        x:-400
+    },
+    visible:{
+        opacity:1,
+        x:0,
+        transition:{
+            duration:2
+        }
+    }
+}
+
+const formMotion = {
+    hidden:{
+        opacity:0,
+        x:400
+    },
+    visible:{
+        opacity:1,
+        x:0,
+        transition:{
+            duration:2
+        }
+    }
+}
 const Register = () =>{
 
     const { Register } = useContext(AccountContext)
@@ -37,7 +64,7 @@ const Register = () =>{
     console.log(errors)
     return(
         <Container>
-        <InfoContainer>
+        <InfoContainer variants={infoMotion} initial='hidden' animate='visible'>
             <Logo/>
             <section>
                 <IconContainer>
@@ -46,7 +73,7 @@ const Register = () =>{
                 <p>A vida é como um sanduíche, é preciso recheá-la com os melhores ingredientes.</p>
             </section>
         </InfoContainer>
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)} variants={formMotion} initial='hidden' animate='visible'>
             <section>
                 <h3>Cadastrar-se</h3>
                 <p><Link to='/login'>Retornar para Login</Link></p>

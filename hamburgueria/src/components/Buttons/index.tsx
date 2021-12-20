@@ -9,14 +9,8 @@ interface ButtonProps extends ButtonHTMLAttributes <HTMLButtonElement>{
 const Button = ({size, children, ...rest }:ButtonProps) =>{
     return(
         
-        !size ?
-            (
-                <ButtonDefault {...rest}>{ children }</ButtonDefault>
-            )
-            :
-            (
-                <ButtonGrey {...rest}>{ children }</ButtonGrey>
-            )
+        !size ?<ButtonDefault  {...rest}>{ children }</ButtonDefault> :<ButtonGrey {...rest}>{ children }</ButtonGrey>
+           
         
         
     )

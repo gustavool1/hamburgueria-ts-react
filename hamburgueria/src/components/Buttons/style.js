@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const ButtonDefault = styled.button`
   background-color: var(--color-primary);
   border: none;
@@ -22,14 +23,13 @@ export const ButtonDefault = styled.button`
 export const ButtonGrey = styled.button`
   border: none;
   font-size: 16px;
-  padding: 10px;
+  padding: 15px;
   width: 100%;
   color: white;
   border-radius: 5px;
   transition: 1s;
   cursor: pointer;
   background-color: var(--grey-300);
-
   @media screen and (min-width: 768px) {
     max-width: 452px;
   }
