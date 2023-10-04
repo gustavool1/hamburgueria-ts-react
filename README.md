@@ -1,66 +1,47 @@
-<h1>Endpoints</h1>
-<p>Essa api possuí 6 endpoints</p>
+# Hamburgueria: um projeto de React.js com TypeScript
 
-<h2>POST/login</h2>
+Este repositório contém um projeto de React.js com TypeScript que simula uma hamburgueria. O usuário pode navegar pelo menu, selecionar os itens desejados e fazer o pedido.
 
-Para efetuar o login você precisa fazer uma requisição com o seguinte corpo
+### Layout Desktop
 
-```json
-    {
-        email:"teste@email.com",
-        password:"123456"
-    }
+![Sign-in-Desktop](https://github.com/gustavool1/hamburgueria-ts-react/blob/main/src/assets/signin.png?raw=true)
+
+![Register-Desktop](https://github.com/gustavool1/hamburgueria-ts-react/blob/main/src/assets/register.png?raw=true)
+
+![Prodcuts-Desktop](https://github.com/gustavool1/hamburgueria-ts-react/blob/main/src/assets/products.png?raw=true)
+
+![Cart-Desktop](https://github.com/gustavool1/hamburgueria-ts-react/blob/main/src/assets/cart.png?raw=true)
+
+## Tecnologias utilizadas
+
+- React.js
+- TypeScript
+- Axios
+- Styled-components
+
+## Como executar o projeto
+
+## Front
+
+```
+# Instale as dependências
+  yarn
+
+# Inicie o projeto
+  yarn start
 ```
 
-<h2>POST/register</h2>
-Para efetuar o você precisa fazer uma requisição com o seguinte corpo
+## Back
 
-```json
-    {   
-        name:"Gustavo",
-        email:"teste@email.com"
-        password:"1234567",
-        confirmPassword:"1234567"
-    }
+```
+ # Instale as dependências
+  yarn
+
+ # Inicie o projeto
+   yarn start
 ```
 
-<h2>GET/cart</h2>
-Através desse endpoint nós conseguimos pegar o carrinho de todos os usuários, porém é necessário passar o bearer, como no exemplo abaixo.
+## 🔗 Links
 
-```json{
-    headers:{
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-    }
-}
-```
-
-<h2>GET/cart?userId=id</h2>
-Através desse endpoint nós podemos pegar o carrinho específico do usuário, também é necessário passar o bearer, como no exemplo abaixo.
-```json{
-
-    headers:{
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-    }
-}
-
-<h2>POST/cart</h2>
-Através desse enpoint podemos adicionar um novo item ao carrinho. Passando o seguinte corpo para requisição.
-```json{
-
-      "title": "Lanche ",
-      "price": 22.30,
-      "type": "Lanche",
-      "image": "https://i.ibb.co/bKfR0rf/combococa.png",
-      "userId":3
-    
-}```
-
-<h2>DELETE/cart/id</h2>
-Através desse endpoint nós podemos deletar um item do carrinho. É necessário passar o bearer, como no exemplo abaixo.
-
-```json{
-     headers:{
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-    }
-}
-```
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://portifolio-gustavool1.vercel.app/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gustavo-oliveira01011/)
