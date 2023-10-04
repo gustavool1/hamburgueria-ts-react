@@ -25,7 +25,7 @@ const Card = ({MenuItem}:CardProps) => {
         <InfoContainer>
             <h3>{MenuItem.title}</h3>
             <p>{MenuItem.type}</p>
-            <h4>R${MenuItem.price}0</h4>
+            <h4>R${MenuItem.price?.toFixed(2)}</h4>
             { localStorage.getItem('token') ?<Button onClick={()=> handleClick()}>Adicionar</Button>: <Button size onClick={()=> toast.warning('Necessário logar para adicionar um item ao carrinho')}>Adicionar</Button>}
            
         </InfoContainer>

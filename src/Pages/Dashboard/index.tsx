@@ -10,10 +10,11 @@ import { useState } from "react"
 const Dashboard = () =>{
     const {  menu } = useContext(MenuContext)
     const [ watingData, setWaitingData ] = useState(true)
-    useEffect(()=>{
-        setTimeout(()=>{
+    useEffect( ()=> {
+        setTimeout( () => {
             setWaitingData(false)
-        }, 5000)
+        }, 2000)
+
     },[])
     return(
         

@@ -8,21 +8,26 @@ import { Link } from 'react-router-dom'
 import { MenuContext } from '../../Providers/Menu'
 import { CartContext } from '../../Providers/Cart'
 const NavBar = () =>{
+
     const { handleModal } = useContext(ModalContext)
     const {  LogOut } = useContext(AccountContext)
     const { cart, getCart } = useContext(CartContext)
     const { filteringMenu, getMenu } = useContext(MenuContext)
     const [inputValue, setInputValue ] = useState('')
+
     const handleChange = (e:any) =>{
         setInputValue(e.target.value)
         filteringMenu(inputValue)
     }
+
     useEffect(()=>{
-        if(inputValue.length === 0){
+        if (inputValue.length === 0) {
             getMenu()
         }   
+        
         getCart()
     },[inputValue])
+
     return(
         <Container>
             <LogoContainer>

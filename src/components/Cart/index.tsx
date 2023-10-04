@@ -10,6 +10,7 @@ const Cart = () =>{
     const { handleModal } = useContext(ModalContext)
     useEffect(()=>{
         getCart()
+        cart.map((item) => console.log(item.price))
     },[])
     return(
 
